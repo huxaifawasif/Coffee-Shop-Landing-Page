@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+.marquee-track {
+  animation: marqueeScroll 40s linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+  animation-direction: reverse;
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgb(214 255 0 / 0.12), transparent 40%),
+    radial-gradient(circle at 80% 75%, rgb(214 255 0 / 0.08), transparent 42%),
+    #000;
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  animation: preloadFloat 2s ease-in-out infinite;
+}
+
+.preloader-logo {
+  width: 108px;
+  height: 108px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 18px rgb(214 255 0 / 0.28));
+  animation: preloadGlow 1.8s ease-in-out infinite alternate;
+}
+
+.preloader-title {
+  color: #d6ff00;
+  font-size: 0.75rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+}
+
+.preloader-dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.preloader-dots span {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 9999px;
+  background: #d6ff00;
+  opacity: 0.25;
+  animation: dotPulse 1s ease-in-out infinite;
+}
+
+.preloader-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.preloader-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes preloadGlow {
+  from {
+    transform: scale(0.96);
+    filter: drop-shadow(0 0 10px rgb(214 255 0 / 0.2));
+  }
+  to {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 28px rgb(214 255 0 / 0.5));
+  }
+}
+
+@keyframes preloadFloat {
+  0%,
+  100% {
+    transform: translateY(-3px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+}
+
+.futuristic-nav {
+  background:
+    radial-gradient(circle at 15% 20%, rgb(214 255 0 / 0.2), transparent 42%),
+    linear-gradient(120deg, rgb(6 10 20 / 0.82), rgb(0 0 0 / 0.86));
+  box-shadow:
+    0 0 0 1px rgb(214 255 0 / 0.18) inset,
+    0 0 30px rgb(214 255 0 / 0.13),
+    0 18px 36px rgb(0 0 0 / 0.55);
+  animation: navPulse 4.8s ease-in-out infinite;
+}
+
+.futuristic-nav-link {
+  position: relative;
+}
+
+.futuristic-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  height: 1px;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 240ms ease;
+  background: linear-gradient(90deg, transparent, #d6ff00, transparent);
+}
+
+.futuristic-nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+@keyframes navPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgb(214 255 0 / 0.18) inset,
+      0 0 22px rgb(214 255 0 / 0.1),
+      0 18px 36px rgb(0 0 0 / 0.55);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgb(214 255 0 / 0.35) inset,
+      0 0 36px rgb(214 255 0 / 0.24),
+      0 22px 40px rgb(0 0 0 / 0.6);
+  }
+}
